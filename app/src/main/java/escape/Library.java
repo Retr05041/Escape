@@ -14,11 +14,7 @@ public class Library {
             // Prints each char using the for loop
             System.out.printf("%c", input.charAt(i));
             // Thread.sleep() needs to be a try catch thing but I don't know why yet
-            try {
-                Thread.sleep(time);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
+            wait(time);
         }
     }
 
@@ -36,5 +32,14 @@ public class Library {
         +"----------------------------------------------------------------------------------\n"
         +"\t\t\t   Made By: Parker Cranfield";
         System.out.println(escapeBanner);
+    }
+
+    // Pause method
+    public void wait(int timeMilli) {
+        try {
+            Thread.sleep(timeMilli);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
