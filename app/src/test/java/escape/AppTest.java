@@ -10,7 +10,6 @@ class AppTest {
     // Init function testing
     @Test void appInitIsTrue() {
         App classUnderTest = new App();
-        Library library = new Library();
-        assertTrue(classUnderTest.gameInit(library));
+        assertTrue(classUnderTest.gameInit());
     }
 }
