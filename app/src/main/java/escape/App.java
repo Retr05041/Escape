@@ -5,12 +5,18 @@ package escape;
 
 public class App {
 
-    // Init Game
+    /**
+     * Dumby Method, don't have purpose as of right now
+     * @return
+     */
     public boolean gameInit() {
         return true;
     }
 
-    // prints the commands for the user
+    /**
+     * Commands Method - Prints the commands the user has to their disposal
+     * @return
+     */
     public String commands() {
         return "================\n"
         + "Commands:\n"
@@ -22,7 +28,11 @@ public class App {
     }
 
 
-    // Type writer method, takes string and time (in milli) and types string char by char with a delay of time - https://stackoverflow.com/questions/35673302/java-typewriter-effect
+    /**
+     * Type writer method, takes string and time (in milli) and types string char by char with a delay of time - https://stackoverflow.com/questions/35673302/java-typewriter-effect
+     * @param input
+     * @param time
+     */
     public void typeWrite(String input, int time) {
         for (int i = 0; i < input.length(); i++) {
             // Prints each char using the for loop
@@ -32,7 +42,9 @@ public class App {
         }
     }
 
-    // Banner for game (WIP)
+    /**
+     * Banner Method (WIP)
+     */
     public void banner() {
         String escapeBanner = "\n"
         + "          _           _            _              _                   _          _ \n"
@@ -50,7 +62,10 @@ public class App {
         System.out.println(escapeBanner);
     }
 
-    // Pause method
+    /**
+     * 'Pause' method
+     * @param timeMilli
+     */
     public void wait(int timeMilli) {
         try {
             Thread.sleep(timeMilli);
@@ -59,12 +74,18 @@ public class App {
         }
     }
 
-    // Main gameloop
+    /**
+     * Game loop
+     * @param game
+     */
     public void gameStart(App game) {
         game.commands();
     }
 
-    // main
+    /**
+     * Main Method within the App - sets everything up
+     * @param args
+     */
     public static void main(String[] args) {
         App game = new App();
         game.gameInit();
