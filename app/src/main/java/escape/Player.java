@@ -5,7 +5,8 @@ package escape;
 
 public class Player {
     // Player name
-    final String playerName;
+    String playerName;
+    String holdName = "Dumby";
 
     /**
      * Constructor for Player
@@ -15,6 +16,17 @@ public class Player {
         this.playerName = name;
     }
 
+    public String getPlayerName() {
+        return this.playerName;
+    }
+
+    /**
+     * Setter for player name
+     * @param newName
+     */
+    public void setPlayerName(String newName) {
+        this.playerName = newName;
+    }
     
     
 }

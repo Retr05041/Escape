@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    // Init function testing
-    @Test void appInitIsTrue() {
+    // Init function testing (WIP)
+    @Test void appPlayerGetsMade() {
         App classUnderTest = new App();
-        assertTrue(classUnderTest.gameInit());
+        // assertInstanceOf(Player, classUnderTest.gameInit());
     }
 }

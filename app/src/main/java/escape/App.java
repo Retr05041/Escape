@@ -3,30 +3,25 @@
  */
 package escape;
 
-public class App {
+import java.util.Scanner;
 
-    /**
-     * Dumby Method, don't have purpose as of right now
-     * @return
-     */
-    public boolean gameInit() {
-        return true;
-    }
+public class App {
+    // Global Variables
+    Scanner input = new Scanner(System.in); // For input
 
     /**
      * Commands Method - Prints the commands the user has to their disposal
      * @return
      */
-    public String commands() {
-        return "================\n"
+    public void commands() {
+        System.out.println("================\n"
         + "Commands:\n"
         + " - go [direction]\n"
         + " - get [item]\n"
         + " - look\n"
         + " - quit\n"
-        + "================";
+        + "================");
     }
-
 
     /**
      * Type writer method, takes string and time (in milli) and types string char by char with a delay of time - https://stackoverflow.com/questions/35673302/java-typewriter-effect
@@ -58,7 +53,7 @@ public class App {
         + "  / / /______ /_/\\__/ / /  / / /________  / /_________/\\ \\ \\  / / /      / / /______ \n"
         + " / / /_______\\\\ \\/___/ /  / / /_________\\/ / /_       __\\ \\_\\/ / /      / / /_______\\ \n"
         + " \\/__________/ \\_____\\/   \\/____________/\\_\\___\\     /____/_/\\/_/       \\/__________/ \n\n"
-        +"\t\t\t   Made By: Parker Cranfield";
+        +"\t\t\t   Made By: Parker Cranfield\n";
         System.out.println(escapeBanner);
     }
 
@@ -75,10 +70,21 @@ public class App {
     }
 
     /**
+     * Dumby Method, don't have purpose as of right now
+     * @return
+     */
+    public void gameInit(Player player) {
+        System.out.print("Please enter name: ");
+        String name = input.next();
+        player.setPlayerName(name);
+    }
+
+    /**
      * Game loop
      * @param game
      */
-    public void gameStart(App game) {
+    public void gameStart(App game, Player player) {
+        System.out.println("Welcome " + player.getPlayerName() + " to 'Escape'!");
         game.commands();
     }
 
@@ -88,9 +94,10 @@ public class App {
      */
     public static void main(String[] args) {
         App game = new App();
-        game.gameInit();
+        Player player = new Player("Player 1");
+        game.gameInit(player);
         game.wait(2000);
         game.banner();
-        game.gameStart(game);
+        game.gameStart(game, player);
     }
 }
