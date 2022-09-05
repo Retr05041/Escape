@@ -70,7 +70,7 @@ public class App {
     }
 
     /**
-     * Dumby Method, don't have purpose as of right now
+     * Gets users name for the game
      * @return
      */
     public void gameInit(Player player) {
