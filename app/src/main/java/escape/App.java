@@ -31,12 +31,10 @@ public class App {
      * Gets users name for the game
      * @return
      */
-    public static void playerInit(Player player) {
-        Scanner nameInput = new Scanner(System.in); // For input
+    public static void playerInit(Player player, Scanner playerInput) {
         System.out.print("Please enter name: ");
-        String name = nameInput.nextLine();
+        String name = playerInput.nextLine();
         player.setPlayerName(name);
-        nameInput.close();
     }
 
     /**
@@ -44,9 +42,11 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
+        Scanner playerInput = new Scanner(System.in); // For input
         World currentWorld = new World();
         Player player = new Player("Player 1");
-        playerInit(player);
-        currentWorld.gameStart(player);
+        playerInit(player, playerInput);
+        currentWorld.gameStart(player, playerInput);
+        playerInput.close();
     }
 }

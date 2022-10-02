@@ -17,10 +17,10 @@ public class World {
     public void commands() {
         System.out.println("================\n"
         + "Commands:\n"
-        + " - go [direction]\n"
-        + " - get [item]\n"
-        + " - look\n"
-        + " - quit\n"
+        + " - 'go [direction]'\n"
+        + " - 'get [item]'\n"
+        + " - 'look'\n"
+        + " - 'quit'\n"
         + "================");
     }
 
@@ -54,8 +54,8 @@ public class World {
      * Game loop
      * @param game
      */
-    public void gameStart(Player player) {
-        typeWrite("Hehehe... you really think you have what it takes....? to- ", 250);
+    public void gameStart(Player player, Scanner playerInput) {
+        typeWrite("Hehehe... you really think you have what it takes....? to- ", 125);
         wait(500);
         App.banner();
         wait(2000);
@@ -63,11 +63,22 @@ public class World {
         commands();
 
         // Game loop
-        Scanner playerDecision = new Scanner(System.in); // For Players input
         while (!gameOver) {
-            System.out.print("" + player.getPlayerName() + ">> ");
-            String decision = playerDecision.nextLine();
+
+            System.out.print("" + player.getPlayerName() + ": ");
+            String decision = playerInput.nextLine();
+            String[] command = decision.split("\\s+"); // Lord I don't like regex
+
+            switch (command[0]) {
+                case "quit":
+                    gameOver = true;
+                    continue;
+            
+                default:
+                    System.out.println("Invalid command, please try again.");
+                    break;
+            }
         }
-        playerDecision.close(); // Remember to close the scanner
+        typeWrite("Guess you didn't have what it takes... shame...\n", 125);
     }
 }
