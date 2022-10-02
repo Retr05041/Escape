@@ -17,11 +17,11 @@ public class World {
     public void commands() {
         System.out.println("================\n"
         + "Commands:\n"
-        + " - 'go [direction]' - Go in a direction, either 'north', 'east', 'south', or 'west'\n"
-        + " - 'get [item]' - Pick up an item and add it to your inventory, ex. 'get flashlight'\n"
-        + " - 'look' - Looks around the room your in\n"
-        + " - 'quit - Quits the game'\n"
-        + " - 'help' - Shows the commands again\n"
+        + " - 'go [direction]' : Go in a direction, either 'north', 'east', 'south', or 'west'\n"
+        + " - 'get [item]' : Pick up an item and add it to your inventory, ex. 'get flashlight'\n"
+        + " - 'look' : Looks around the room your in\n"
+        + " - 'quit : Quits the game'\n"
+        + " - 'help' : Shows the commands again\n"
         + "================");
     }
 
