@@ -1,5 +1,5 @@
 /*
- * Player class
+ * Player class - details for a playher
  */
 package escape;
 
@@ -16,12 +16,16 @@ public class Player {
         this.playerName = name;
     }
 
+    /**
+     * Returns player's name
+     * @return
+     */
     public String getPlayerName() {
         return this.playerName;
     }
 
     /**
-     * Setter for player name
+     * Sets player's name
      * @param newName
      */
     public void setPlayerName(String newName) {

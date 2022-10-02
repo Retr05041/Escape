@@ -1,46 +1,16 @@
 /*
- * Main app for game
+ * App Class - holds both the world and the player
  */
 package escape;
 
 import java.util.Scanner;
 
 public class App {
-    // Global Variables
-    Scanner input = new Scanner(System.in); // For input
-
-    /**
-     * Commands Method - Prints the commands the user has to their disposal
-     * @return
-     */
-    public void commands() {
-        System.out.println("================\n"
-        + "Commands:\n"
-        + " - go [direction]\n"
-        + " - get [item]\n"
-        + " - look\n"
-        + " - quit\n"
-        + "================");
-    }
-
-    /**
-     * Type writer method, takes string and time (in milli) and types string char by char with a delay of time - https://stackoverflow.com/questions/35673302/java-typewriter-effect
-     * @param input
-     * @param time
-     */
-    public void typeWrite(String input, int time) {
-        for (int i = 0; i < input.length(); i++) {
-            // Prints each char using the for loop
-            System.out.printf("%c", input.charAt(i));
-            // Thread.sleep() needs to be a try catch thing but I don't know why yet
-            wait(time);
-        }
-    }
 
     /**
      * Banner Method (WIP)
      */
-    public void banner() {
+    public static void banner() {
         String escapeBanner = "\n"
         + "          _           _            _              _                   _          _ \n"
         + "         /\\ \\        / /\\         /\\ \\           / /\\                /\\ \\       /\\ \\ \n"
@@ -58,34 +28,15 @@ public class App {
     }
 
     /**
-     * 'Pause' method
-     * @param timeMilli
-     */
-    public void wait(int timeMilli) {
-        try {
-            Thread.sleep(timeMilli);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    /**
      * Gets users name for the game
      * @return
      */
-    public void gameInit(Player player) {
+    public static void playerInit(Player player) {
+        Scanner nameInput = new Scanner(System.in); // For input
         System.out.print("Please enter name: ");
-        String name = input.next();
+        String name = nameInput.nextLine();
         player.setPlayerName(name);
-    }
-
-    /**
-     * Game loop
-     * @param game
-     */
-    public void gameStart(App game, Player player) {
-        System.out.println("Welcome " + player.getPlayerName() + " to 'Escape'!");
-        game.commands();
+        nameInput.close();
     }
 
     /**
@@ -93,11 +44,10 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-        App game = new App();
+        World currentWorld = new World();
         Player player = new Player("Player 1");
-        game.gameInit(player);
-        game.wait(2000);
-        game.banner();
-        game.gameStart(game, player);
+        playerInit(player);
+        banner();
+        currentWorld.gameStart(player);
     }
 }
