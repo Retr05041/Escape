@@ -47,7 +47,6 @@ public class App {
         World currentWorld = new World();
         Player player = new Player("Player 1");
         playerInit(player);
-        banner();
         currentWorld.gameStart(player);
     }
 }

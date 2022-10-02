@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class World {
 
+    Boolean gameOver = false; // Tells the world if the game is over
+
     /**
      * Commands Method - Prints the commands the user has to their disposal
      * @return
@@ -53,8 +55,19 @@ public class World {
      * @param game
      */
     public void gameStart(Player player) {
+        typeWrite("Hehehe... you really think you have what it takes....? to- ", 250);
+        wait(500);
+        App.banner();
         wait(2000);
         System.out.println("Welcome " + player.getPlayerName() + " to 'Escape'!");
         commands();
+
+        // Game loop
+        Scanner playerDecision = new Scanner(System.in); // For Players input
+        while (!gameOver) {
+            System.out.print("" + player.getPlayerName() + ">> ");
+            String decision = playerDecision.nextLine();
+        }
+        playerDecision.close(); // Remember to close the scanner
     }
 }
