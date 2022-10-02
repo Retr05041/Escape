@@ -17,10 +17,11 @@ public class World {
     public void commands() {
         System.out.println("================\n"
         + "Commands:\n"
-        + " - 'go [direction]'\n"
-        + " - 'get [item]'\n"
-        + " - 'look'\n"
-        + " - 'quit'\n"
+        + " - 'go [direction]' - Go in a direction, either 'north', 'east', 'south', or 'west'\n"
+        + " - 'get [item]' - Pick up an item and add it to your inventory, ex. 'get flashlight'\n"
+        + " - 'look' - Looks around the room your in\n"
+        + " - 'quit - Quits the game'\n"
+        + " - 'help' - Shows the commands again\n"
         + "================");
     }
 
@@ -67,16 +68,20 @@ public class World {
 
             System.out.print("" + player.getPlayerName() + ": ");
             String decision = playerInput.nextLine();
-            String[] command = decision.split("\\s+"); // Lord I don't like regex
+            String[] playerCommand = decision.split("\\s+"); // Lord I don't like regex - splits the players decision into single string commands
 
-            switch (command[0]) {
+            switch (playerCommand[0]) {
                 case "quit":
                     gameOver = true;
+                    continue;
+                
+                case "help":
+                    commands();
                     continue;
             
                 default:
                     System.out.println("Invalid command, please try again.");
-                    break;
+                    continue;
             }
         }
         typeWrite("Guess you didn't have what it takes... shame...\n", 125);
