@@ -78,6 +78,31 @@ public class World {
                 case "help":
                     commands();
                     continue;
+                
+                case "go":
+                    if (playerCommand.length > 1) {
+                        switch (playerCommand[1]) {
+                            case "north":
+                                System.out.println("You went north");
+                                continue;
+                            case "east":
+                                System.out.println("You went east");
+                                continue;
+                            case "south":
+                                System.out.println("You went south");
+                                continue;
+                            case "west":
+                                System.out.println("You went west");
+                                continue;
+                        
+                            default:
+                                System.out.println("Invalid command, please try again.");
+                                continue;
+                        }
+                    } else {
+                        System.out.println("Invalid command, please try again.");
+                        continue;
+                    }
             
                 default:
                     System.out.println("Invalid command, please try again.");
