@@ -1,19 +1,17 @@
-#   "Escape" -- RPG made in python
-#   Coded by Parker Cranfield
-#   02/13/2020
+""" 
+'Escape' -- RPG made in python
+Coded by Parker Cranfield
+02/13/2020
+"""
 
-# IMPORTS
 from escapelib import *
 from rooms import *
 
-# VARIBALES
 inventory = []
 currentRoom = "your room"
 
-
-# BODY
-# displays current status
 def status():
+  """Takes in nothing, prints out the status of the player"""
   print("---------------------------")
   print("You are in " + YELLOW + currentRoom + RESET_COLOR)
   print("Inventory : " + BLUE + str(inventory) + RESET_COLOR)
@@ -22,8 +20,8 @@ def status():
   print("---------------------------")
   print()
 
-# gets players commands either moves rooms or gets items
 def start():
+    """Takes in nothing, begins the game loop"""
     music()
     commands()
     global currentRoom
@@ -33,14 +31,11 @@ def start():
     while True:
         status()
 
-        # asks player for input when input field is empty
         move = ""
         while move == "":
             move = input(GREEN + ">> " + RESET_COLOR)
-            move = move.lower().split(" ", 1) # splits tring into a list max num for the list is 2 -- devider is a " "
+            move = move.lower().split(" ", 1)
 
-            # if the input is "go"
-            # checks if player can enter room -- checks if player has needed item
             if move[0] == "go":
                 if len(move) != 1:
                     if move[1] in rooms[currentRoom]:
@@ -69,8 +64,6 @@ def start():
                 else:
                     print("Please Enter a direction to go.")
 
-            # if the input is "get"
-            # gets the item the player wants
             if move[0] == "get" :
                 if len(move) != 1:
                     if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]["item"]:
@@ -85,11 +78,9 @@ def start():
                 else:
                     print("Please Enter an item to get.")
 
-            # if the input is "look"
             if move[0] == "look":
                 print(rooms[currentRoom]["look"])
 
-            # if input is "quit"
             if move[0] == "quit":
                 clear()
                 json.dump(inventory, open("saveinventory.txt", "w"))
@@ -100,14 +91,12 @@ def start():
                 sleep(3)
                 exit()
 
-            # if the input doesnt get a "go" or a "get"
             if move[0] != "go" or move[0] != "get" or move[0] != "look" or move[0] != "quit":
                 print()
 
 
-
-# startup sequence
 def main():
+    """Takes in nothing, prints intro and menu"""
     global inventory
     global currentRoom
     if os.stat("saveinventory.txt").st_size == 0:
